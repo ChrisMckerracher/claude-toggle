@@ -1,0 +1,24 @@
+services:
+  ollama:
+    image: ollama/ollama:latest
+    container_name: codex-ollama
+    ports:
+      - "11434:11434"
+    volumes:
+      - ollama_data:/root/.ollama
+    environment:
+      - OLLAMA_HOST=0.0.0.0
+    restart: unless-stopped
+    # Pull qwen2.5:0.5b model on startup (entrypoint script approach)
+    entrypoint:
+      - /bin/sh
+      - -c
+      - |
+        ollama serve &
+        sleep 5
+        ollama pull qwen2.5:0.5b
+        wait
+
+volumes:
+  ollama_data:
+    driver: local

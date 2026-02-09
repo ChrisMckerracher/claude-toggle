@@ -1,0 +1,27 @@
+{
+  "name": "codex_in_claude_code",
+  "version": "1.0.0",
+  "description": "",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "dev": "pnpm --filter @codex-proxy/codex dev",
+    "build": "pnpm -r --filter @codex-proxy/provider-core --filter @codex-proxy/codex --filter @codex-proxy/cli build",
+    "build:cli": "pnpm --filter @codex-proxy/cli build",
+    "start": "node packages/codex/dist/index.js",
+    "start:old": "node src/index.js",
+    "ct": "node packages/cli/dist/index.js",
+    "login": "node packages/codex/dist/cli/login.js",
+    "login:old": "node src/login.js",
+    "typecheck": "pnpm -r --filter @codex-proxy/provider-core --filter @codex-proxy/codex --filter @codex-proxy/cli typecheck",
+    "test": "pnpm --filter @codex-proxy/provider-core test && pnpm --filter @codex-proxy/cli test",
+    "clean": "pnpm --filter @codex-proxy/codex clean"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "devDependencies": {
+    "@types/node": "^25.2.1",
+    "typescript": "^5.9.3"
+  }
+}
